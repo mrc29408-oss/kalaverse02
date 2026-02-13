@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalavesre.com</title>
+    <link rel="icon" href="https://via.placeholder.com/32x32/000/fff?text=K" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* White Background Theme with Black Font */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            /* White background */
+            color: #000;
+            /* Black font */
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        a {
+            color: #000;
+            /* Black links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #666;
+            /* Dark gray on hover */
+        }
+
+        /* Professional Sticky Header (White Background) */
+        header {
+            background-color: #fff;
+            /* White background */
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            /* Light gray border */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo img {
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            /* Black underline */
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #000;
+            /* Black hamburger */
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open div:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section with Single Video */
+        .hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* White overlay */
+            padding: 20px;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInTitle 1s ease-in-out;
+        }
+
+        @keyframes fadeInTitle {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Products Section with Perfect Grid */
+        .products {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #fff;
+            /* White background */
+            border: 1px solid #ccc;
+            /* Light gray border */
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 350px;
+            /* Same height for all cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+        .product-card img {
+            width: 250px;
+            /* Same width */
+            height: 300px;
+            /* Same height */
+            object-fit: cover;
+            margin: 0 auto 15px;
+            /* Centered */
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            margin: 10px 0;
+        }
+
+        .add-to-cart {
+            background-color: #000;
+            /* Black button */
+            color: #fff;
+            /* White text */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            align-self: center;
+        }
+
+        .add-to-cart:hover {
+            background-color: #666;
+            /* Gray on hover */
+        }
+
+        .view-all {
+            margin-top: 40px;
+        }
+
+        .view-all button {
+            background-color: #000;
+            /* Black button */
+            color: #fff;
+            /* White text */
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .view-all button:hover {
+            background-color: #666;
+            /* Gray on hover */
+        }
+
+        /* About Section */
+        .about {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            /* Light gray background */
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-size: 18px;
+        }
+
+        .about img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            /* Light gray border */
+            background-color: #fff;
+            /* White background */
+            color: #000;
+            /* Black text */
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            background-color: #000;
+            /* Black button */
+            color: #fff;
+            /* White text */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #666;
+            /* Gray on hover */
+        }
+
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        /* Footer (White Background) */
+        footer {
+            background-color: #fff;
+            /* White background */
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            /* Light gray border */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: rgba(255, 255, 255, 0.9);
+                /* Semi-transparent white */
+                padding: 20px;
+                border: 1px solid #ccc;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                width: 200px;
+                transform: translateY(-10px);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            nav ul.show {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+            }
+
+            .product-card {
+                min-height: 320px;
+                /* Adjust for mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Professional Sticky Header -->
+    <header>
+        <div class="logo">
+            <img src="A/view.png" alt="Kalavesre Logo" width="70" height="70">
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Single Video -->
+    <section class="hero" id="home">
+        <video autoplay muted loop>
+            <source src="A/Kala.mp4" type="video/mp4" autoplay="on">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <!-- Products Section with Perfect Grid -->
+    <section class="products" id="shop">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+
+            <a href="Soldier.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/3.jpg" alt="Racing Cap">
+                    <h3>
+                        "Dwarpal"
+                    </h3>
+                    <p>₹ 2199</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+
+            <a href="CardboardH.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/1.jpg" alt="Card-board-Harmonium">
+                    <h3>
+                        "Miniature Cardboard Harmonium"
+                    </h3>
+                    <p>₹ 499</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+
+            <a href="Traditional-art.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/2.2.jpg" alt="Racing Hoodie">
+                    <h3>
+                        "Rajasthani culture art"
+                    </h3>
+                    <p>₹ 1099</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+
+            <a href="RK.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/4.3.jpg" alt="Racing Jacket">
+                    <h3>
+                        Radha Krishna Art-"Divine Gaze"
+                    </h3>
+                    <p>₹ 999</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+
+            <a href="Sparrow.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/5.1.jpg" alt="Racing Jacket">
+                    <h3>
+                        Sparrow Art-
+                        "Realistic Ballpoint Pen Illustration"
+                    </h3>
+                    <p>₹ 699</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+
+            <a href="Mahadev.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/6.jpg" alt="Racing Jacket">
+                    <h3>
+                        "Shiva Line Art Portrait"
+                    </h3>
+                    <p>₹ 399</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+
+            <a href="S.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/7.jpg" alt="Racing Jacket">
+                    <h3>
+                        "Scheck Art"
+                    </h3>
+                    <p>
+                        ₹ According To Your Art
+                    </p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+
+            <a href="G.html" style="text-decoration: none; color: inherit;">
+                <div class="product-card">
+                    <img src="A/8.jpg" alt="Racing Jacket">
+                    <h3>
+                        "Ecofrenfldly Ganesha"
+                    </h3>
+                    <p>
+                        ₹ According to your order
+                    </p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </a>
+        </div>
+        <div class="view-all">
+            <button onclick="window.location.href='Loading.html'">View All</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About कलाverse</h2>
+        <p>
+            KALAVERSE began with a simple idea — to bring together music, art, painting, and handmade creativity under
+            one roof. Every piece is crafted with emotion, rhythm, and imagination. From music-themed models to detailed
+            art decor, each creation tells a story and adds soul to your space."
+        </p>
+
+        <p>
+            KALAVERSE is a leading brand dedicated to delivering high-quality, innovative products that inspire and
+            empower. Founded with a passion for excellence, we combine cutting-edge design with timeless style to create
+            items that stand out. Our mission is to provide exceptional value and foster a community of enthusiasts who
+            share our vision for quality and performance.
+        </p>
+        <p>
+            From our humble beginnings to becoming a trusted name, we've always prioritized customer satisfaction and
+            sustainability. Explore our story and join us in redefining what's possible.
+        </p>
+
+        <div>
+            <h2>
+                About US
+            </h2>
+            <p align="left">
+                <b>
+                    Art Department :
+                </b>
+            </p>
+            <p align="left">
+                - Mitheel Sodha
+            </p>
+            <p align="left">
+                - Vivek Sondagar
+            </p>
+
+            <p align="left">
+                <b>
+                    Material Department
+                </b>
+            </p>
+            <p align="left">
+                - Paresh Songara
+            </p>
+
+            <p align="left">
+                <b>
+                    Tachnical Department :
+                </b>
+            </p>
+            <p align="left">
+                - Khushal Chauhan
+            </p>
+
+            <p align="left">
+                <b>
+                    Technical Support :
+                </b>
+            </p>
+            <p align="left">
+                - Smitraj Jadeja
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" action="TY.html">
+            <!-- REQUIRED hidden input for Netlify -->
+            <input type="hidden" name="form-name" value="contact">
+
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <a href="TY.html">
+    <button>Open TY Page</button>
+</a>
+
+        </form>
+
+        <div class="contact-info">
+            <p>Email : kalaverse02@gmail.com</p>
+            <p>Phone : +91 8401408533</p>
+            <p>Address : Jamnagar, Gujarat, India</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 कलाverse.com.
+            All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        // Professional mobile menu toggle with animation
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('show');
+            hamburger.classList.toggle('open');
+        }
+
+        // Form submission handler (demo alert)
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+        }
+    </script>
+</body>
+
+</html>

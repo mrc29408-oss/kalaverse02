@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading - Kalavesre.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* White Background Theme with Black Font */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            /* White background */
+            color: #000;
+            /* Black font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Rotating Circle Loader */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ccc;
+            /* Light gray border */
+            border-top: 5px solid #000;
+            /* Black top border */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Popup Modal */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Semi-transparent white overlay */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            /* White background */
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+        .popup h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+        }
+
+        .popup p {
+            margin: 0 0 20px;
+            font-size: 16px;
+        }
+
+        .popup button {
+            background-color: #000;
+            /* Black button */
+            color: #fff;
+            /* White text */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .popup button:hover {
+            background-color: #666;
+            /* Gray on hover */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .loader {
+                width: 40px;
+                height: 40px;
+                border-width: 4px;
+            }
+
+            .popup-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Rotating Circle Loader -->
+    <div class="loader"></div>
+
+    <!-- Popup Modal -->
+    <div class="popup" id="error-popup">
+        <div class="popup-content">
+            <h2>Network Error</h2>
+            <p>Unable to load content. Please check your internet connection and try again.</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Show popup after 3 seconds (simulating loading delay)
+        setTimeout(() => {
+            document.getElementById('error-popup').style.display = 'flex';
+        }, 3000);
+
+        // Function to close popup
+        function closePopup() {
+            document.getElementById('error-popup').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
