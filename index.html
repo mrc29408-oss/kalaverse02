@@ -629,17 +629,19 @@
     <section class="contact" id="contact">
         <h2> Give Your Feedback </h2>
 
-        <form class="contact-form" name="contact" method="POST" data-netlify="true" action="TY.html">
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" action="https://formspree.io/f/xojndqnq">
             <!-- REQUIRED hidden input for Netlify -->
             <input type="hidden" name="form-name" value="contact">
 
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <input type="hidden" name="_next" value="TY.html">
 
             <a href="TY.html">
-            <button type="button"> Send Message </button>
+            <button type="submit"> Send Message </button>
             </a> 
+            
         </form>
 
         <div class="contact-info">
